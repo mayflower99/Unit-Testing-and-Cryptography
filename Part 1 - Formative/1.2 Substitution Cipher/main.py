@@ -4,7 +4,7 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 def sub_encode(text, codebet):
-    return ""
+    return "".join([codebet[alpha.index(x)] for x in text])
 
 
 def sub_decode(text, codebet):

@@ -2,13 +2,14 @@
 
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-
+print()
 def caesar_encode(text, n):
-    return ""
+    return "".join([alpha[(alpha.index(x)+5)%26] for x in text])
 
 
 def caesar_decode(text, n):
-    return ""
+    return "".join([alpha[(alpha.index(x)-5)%26] for x in text])
+
 
 
 test = "HELLOWORLD"
