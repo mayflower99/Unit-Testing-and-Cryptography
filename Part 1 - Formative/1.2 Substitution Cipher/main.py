@@ -8,7 +8,7 @@ def sub_encode(text, codebet):
 
 
 def sub_decode(text, codebet):
-    return ""
+    return "".join([alpha[codebet.index(x)] for x in text])
 
 
 test = "HELLOWORLD"
