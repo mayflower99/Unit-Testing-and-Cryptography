@@ -20,7 +20,7 @@ def caesar_decode(text, n):
     :param n:
     :return: decoded text
     """
-    return "".join(chr((ord(x) + n) % 256) if ((ord(x) - n) % 256) >= 0 else chr(256 + (ord(x) - n) % 256) for x in str(text))
+    return "".join(chr((ord(x) - n) % 256) if ((ord(x) - n) % 256) >= 0 else chr(256 + (ord(x) - n) % 256) for x in str(text))
 
 
 
