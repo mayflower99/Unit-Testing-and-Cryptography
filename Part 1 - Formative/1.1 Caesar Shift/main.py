@@ -1,9 +1,8 @@
 # Read the instructions to see what you need to do here!
 
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-print()
-
+def int_array_from_char(string):
+    return [ord(x) for x in string]
 def caesar_encode(text, n):
     """
 
@@ -11,7 +10,7 @@ def caesar_encode(text, n):
     :param n:
     :return: encoded text
     """
-    return "".join([chr((ord(x) + n)%256) for x in str(text)])
+    return "".join([chr((ord(x) + abs(n))%256) for x in str(text)])
 
 
 def caesar_decode(text, n):
@@ -20,8 +19,8 @@ def caesar_decode(text, n):
     :param n:
     :return: decoded text
     """
-    return "".join(chr((ord(x) - n) % 256) if ((ord(x) - n) % 256) >= 0 else chr(256 + (ord(x) - n) % 256) for x in str(text))
-
+    return "".join(chr((ord(x) - abs(n)) % 256) if ((ord(x) - abs(n)) % 256) >= 0 else chr(256 + (ord(x) - abs(n)) % 256) for x in str(text))
+print (ord("\\"))
 
 
 
@@ -48,8 +47,9 @@ def caesar_decode(text, n):
 
 test = "HELLOWORLD"
 shift = 5
-enc = caesar_encode(test, shift)
-dec = caesar_decode(enc, shift)
+enc = caesar_encode("\\!@#$%^&*()_+-={}[]:;<>,.?/|\"'~`", 50)
+print(int_array_from_char(enc))
+dec = caesar_decode(enc, 50)
 print(enc)
 print(dec)
 # If this worked, dec should be the same as test!
