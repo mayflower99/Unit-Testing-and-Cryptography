@@ -6,8 +6,8 @@ def int_array_from_char(string):
 def caesar_encode(text, n):
     """
 
-    :param text:
-    :param n:
+    :param text: the text to be encrypted
+    :param n: the amount shifted
     :return: encoded text
     """
     return "".join([chr((ord(x) + abs(n))%256) for x in str(text)])
@@ -15,33 +15,11 @@ def caesar_encode(text, n):
 
 def caesar_decode(text, n):
     """
-    :param text:
-    :param n:
+    :param text: text to be decrypted
+    :param n: shift value
     :return: decoded text
     """
     return "".join(chr((ord(x) - abs(n)) % 256) if ((ord(x) - abs(n)) % 256) >= 0 else chr(256 + (ord(x) - abs(n)) % 256) for x in str(text))
-print (ord("\\"))
-
-
-
-
-# def caesar_encode(text, n):
-#     """
-#
-#     :param text:
-#     :param n:
-#     :return: encoded text
-#     """
-#     return "".join([alpha[(alpha.index(x)+5)%26] for x in text])
-#
-#
-# def caesar_decode(text, n):
-#     """
-#     :param text:
-#     :param n:
-#     :return: decoded text
-#     """
-#     return "".join([alpha[(alpha.index(x)-5)%26] for x in text])
 
 
 
