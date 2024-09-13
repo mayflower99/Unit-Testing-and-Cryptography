@@ -1,3 +1,4 @@
+
 # Project: Vigenere Cipher
 It turns out that the Substitution Cipher wasn't a great cipher either; in fact, most newspapers carry a daily puzzle about solving a substitution cipher.  Anything that someone can figure out for fun in an afternoon is not a very secure secret code!
 
