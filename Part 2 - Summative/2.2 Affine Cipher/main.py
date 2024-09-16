@@ -20,10 +20,20 @@ def mod_inverse(a, m):
 
 # These are the functions you'll need to write:
 def affine_encode(text, a, b):
-    return ''
+    new_string = ""
+    for letter in test:
+        cypher_number = alpha.index(letter) * a % 26
+        cypher_number = (cypher_number + b) %26
+        new_string += alpha[cypher_number]
+    return new_string
 
 def affine_decode(text, a, b):
-    return ''
+    new_string = ""
+    for letter in test:
+        cypher_number = (alpha.index(letter) - b) %26
+        cypher_number = cypher_number * mod_inverse(a ,26) % 26
+        new_string += alpha[cypher_number]
+    return new_string
 
 test = "HELLOWORLD"
 a = 3
