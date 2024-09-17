@@ -21,17 +21,17 @@ def mod_inverse(a, m):
 # These are the functions you'll need to write:
 def affine_encode(text, a, b):
     new_string = ""
-    for letter in test:
-        cypher_number = alpha.index(letter) * a % 26
-        cypher_number = (cypher_number + b) %26
+    for letter in text:
+        cypher_number = (alpha.index(letter) * a) % 26
+        cypher_number = (cypher_number + b) % 26
         new_string += alpha[cypher_number]
     return new_string
 
 def affine_decode(text, a, b):
     new_string = ""
-    for letter in test:
-        cypher_number = (alpha.index(letter) - b) %26
-        cypher_number = cypher_number * mod_inverse(a ,26) % 26
+    for letter in text:
+        cypher_number = (alpha.index(letter) - b) % 26
+        cypher_number = (cypher_number * 9) % 26
         new_string += alpha[cypher_number]
     return new_string
 
@@ -49,10 +49,19 @@ print(dec)
 # PART 2
 # These  are the functions you'll need to write:
 def convert_to_num(ngram):
-    return 0
-
+    new_number = 0
+    for i, letter in enumerate(ngram):
+        new_number += alpha.index(letter) + (26 ** i)
+    return new_number
 def convert_to_text(num, n):
-    return ''
+    new_text = ""
+    i = 0
+    num // 26
+    while num != 0:
+        new_text += alpha[num % 26]
+        num // 26
+        i += 1
+    return new_text
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
 l = len(test)
