@@ -51,16 +51,14 @@ print(dec)
 def convert_to_num(ngram):
     new_number = 0
     for i, letter in enumerate(ngram):
-        new_number += alpha.index(letter) + (26 ** i)
+        new_number += alpha.index(letter) * (26 ** i)
     return new_number
 def convert_to_text(num, n):
     new_text = ""
-    i = 0
-    num // 26
-    while num != 0:
-        new_text += alpha[num % 26]
-        num // 26
-        i += 1
+    for i in range(n):
+        num_temp = num
+        num =  num // 26
+        new_text += alpha[num_temp % 26]
     return new_text
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
@@ -71,15 +69,38 @@ print(num)
 print(answer)
 # If this worked, answer should be the same as test!
 
+def affine_encode_num(num:int, a:int, b:int) -> int:
+    cypher_number = (num * a) % 26
+    cypher_number = (cypher_number + b) % 26
+    return cypher_number
 
-
+def affine_decode_num(num:int, a:int, b:int)-> str:
+    cypher_number = (num - b) % 26
+    cypher_number = (cypher_number * mod_inverse(a,26)) % 26
+    return cypher_number
 # PART 3
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
-    return ''
+    while(len(text) % n != 0):
+        text = text + "X"
+    new_string = ""
+    for i in range(int(len(text) / n)):
+
+        x = text[(i*n):((i+1)*n)]
+        x = convert_to_num(x)
+        number = affine_encode_num(x, a, b)
+        number = number % 26 ** n
+        new_string += convert_to_text(number, n)
+
 
 def affine_n_decode(text, n, a, b):
+    new_string = ""
+    for i in range(int(len(text) / n)):
+        x = convert_to_num(text[(i * n):((i + 1) * n)])
+        number = affine_decode_num(x, a, b)
+        new_string += convert_to_text(number, n)
+
     return ''
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
