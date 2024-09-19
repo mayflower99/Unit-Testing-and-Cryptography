@@ -4,6 +4,12 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 def vig_encode(text: str, keyword: str) -> str:
+    """
+
+    :param text: is the text you wish to encode
+    :param keyword: is the keyword to use as a key
+    :return:
+    """
 
     return "".join([chr(ord(x) + ord(keyword[i % len(keyword)]) % 256) for i, x in enumerate(text)])
 
