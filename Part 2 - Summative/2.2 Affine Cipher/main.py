@@ -1,5 +1,5 @@
 import math
-
+from validate import validate_input
 # Read the instructions to see what to do!
 
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -31,6 +31,7 @@ def mod_inverse(a, m):
 
 
 # These are the functions you'll need to write:
+@validate_input
 def affine_encode(text, a, b):
     """
 
@@ -74,6 +75,7 @@ print(dec)
 
 # PART 2
 # These  are the functions you'll need to write:
+@validate_input
 def convert_to_num(ngram):
     """
 
@@ -117,7 +119,6 @@ def affine_encode_num(num:int, a:int, b:int, n) -> int:
     cypher_number = num * a
     cypher_number = (cypher_number + b) % 26**n
     return cypher_number
-
 def affine_decode_num(num:int, a:int, b:int,n)-> str:
     """
 
@@ -133,6 +134,7 @@ def affine_decode_num(num:int, a:int, b:int,n)-> str:
 # PART 3
 
 # These are the functions you'll need to write:
+@validate_input
 def affine_n_encode(text, n, a, b):
     """
 

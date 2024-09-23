@@ -15,6 +15,12 @@ def vig_encode(text: str, keyword: str) -> str:
 
 
 def vig_decode(text: str, keyword: str) -> str:
+    """
+
+    :param text: text to decode
+    :param keyword: the keyword to use as a key
+    :return: the decoded text
+    """
     return "".join([chr(ord(x) - ord(keyword[i % len(keyword)]) % 256) if ord(x) - ord(keyword[i % len(keyword)]) % 256
                     >= 0 else chr(256 + (ord(x) - ord(keyword[i % len(keyword)]) % 256)) for i, x in enumerate(text)])
 
